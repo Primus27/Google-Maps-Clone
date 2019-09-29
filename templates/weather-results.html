@@ -1,0 +1,50 @@
+<!--
+Author: Primus27
+Date: 05/2019
+Description: The weather page of the travel planner application
+-->
+
+{% extends 'layout.html' %}
+
+<!-- Navigation Bar -->
+{% block nav %}
+    <li class="navbar-nav navbar-item mr-auto">
+        <a class="nav-link" href="/route-options">Get Started</a>
+        <a class="nav-link" href="/route-results">Route Results</a>
+        <a class="nav-link active" href="/weather-results">Weather</a>
+    </li>
+{% endblock %}
+
+<!-- Custom body data -->
+{% block body %}
+    <h1>Weather Results</h1><br>
+
+    <!-- API Error Flag is False -->
+    {% if flag is sameas false %}
+        <img src={{ weather["image"] }} alt="weather_img" width="10%" height="auto"><br><br>
+
+        <!-- Table -->
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <td><strong>Location:</strong></td>
+                    <td><span>{{ postcode }}</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Weather:</strong></td>
+                    <td>{{ weather["weather"] }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Temperature:</strong></td>
+                    <td><span>{{ weather["temp"] }}</span><span> °C</span></td>
+                </tr>
+            </tbody>
+        </table>
+    <!-- API Error Flag is True -->
+    {% else %}
+        <div class="jumbotron text-center">
+            <h1>Something went wrong</h1><br>
+            <p class="lead">{{ weather }}</p>
+        </div>
+    {% endif %}
+{% endblock %}

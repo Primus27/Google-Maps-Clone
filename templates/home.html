@@ -1,0 +1,25 @@
+<!--
+Author: Primus27
+Date: 05/2019
+Description: The homepage of the travel planner application
+-->
+
+{% extends 'layout.html' %}
+
+<!-- Navigation Bar -->
+{% block nav %}
+    <li class="navbar-nav navbar-item mr-auto">
+        <a class="nav-link" href="/route-options">Get Started</a>
+    </li>
+{% endblock %}
+
+<!-- Custom body data -->
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1>Welcome to the Travel Planner</h1><br>
+        <p class="lead">This application is a demo, developed by Primus27.</p>
+    </div>
+    <div>
+        <a href=route-options class="btn btn-primary btn-block" role="button">PLAN A ROUTE</a>
+    </div>
+{% endblock %}

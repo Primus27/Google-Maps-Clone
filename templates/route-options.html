@@ -1,0 +1,66 @@
+<!--
+Author: Primus27
+Date: 05/2019
+Description: The options page of the travel planner application
+-->
+
+{% extends 'layout.html' %}
+
+<!-- Navigation Bar -->
+{% block nav %}
+    <li class="navbar-nav navbar-item mr-auto">
+        <a class="nav-link active" href="/route-options">Get Started</a>
+    </li>
+{% endblock %}
+
+<!-- Custom body data -->
+# Custom body data ##
+{% block body %}
+    <h1>Route Options</h1><br>
+
+    {% if error_message %}
+        <div class="alert alert-danger" id="route_error_message">
+            <br>{{ error_message }}<br><br>
+        </div>
+    {% endif %}
+
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <form action="" method="post">
+                <i class="fas fa-map-marker-alt"></i>
+                <label for="start_postcode">From:</label><br>
+                <input type="text" name="start_postcode" id="start_postcode" placeholder="Postcode" required><br><br>
+
+                <i class="fas fa-map-marker-alt"></i>
+                <label for="end_postcode">To:</label><br>
+                <input type="text" name="end_postcode" id="end_postcode" placeholder="Postcode" required><br><br>
+
+                <label for="when">When:</label><br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="when" id="when-at" value="at" checked>
+                    <label class="form-check-label" for="when-at">At</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="when" id="when-by" value="by">
+                    <label class="form-check-label" for="when-by">By</label><br><br>
+                </div>
+
+                <i class="fas fa-clock"></i>
+                <label for="time">Time: <span class="text-muted">(Optional)</span></label><br>
+                <input type="text" name="time" id="time" placeholder="HH:MM"><br><br>
+
+                <i class="fas fa-calendar-alt"></i>
+                <label for="date">Date: <span class="text-muted">(Optional)</span></label><br>
+                <input type="text" name="date" id="date" placeholder="DD/MM/YY"><br><br>
+
+                <label for="modes">Modes of Transport:</label><br>
+                <input type="checkbox" disabled checked>&nbsp;&nbsp;<i class="fas fa-walking"></i><br>
+                <input type="checkbox" name="mode1" value="bus" checked>&nbsp;&nbsp;<i class="fas fa-bus"></i><br>
+                <input type="checkbox" name="mode2" value="train" checked>&nbsp;&nbsp;<i class="fas fa-subway"></i><br>
+                <input type="checkbox" name="mode3" value="boat" checked>&nbsp;&nbsp;<i class="fas fa-ship"></i><br><br>
+
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

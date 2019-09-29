@@ -1,0 +1,23 @@
+<!--
+Author: Primus27
+Date: 05/2019
+Description: The page for a 500 error
+-->
+
+{% extends 'layout.html' %}
+
+<!-- Navigation Bar -->
+{% block nav %}
+    <li class="navbar-nav navbar-item mr-auto">
+        <a class="nav-link" href="/route-options">Get Started</a>
+    </li>
+{% endblock %}
+
+<!-- Custom body data -->
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1>500</h1><br>
+        <p class="lead">INTERNAL SERVER ERROR</p><br>
+        <p class="lead">Sorry for the inconvenience!</p>
+    </div>
+{% endblock %}

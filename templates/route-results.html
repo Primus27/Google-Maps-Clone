@@ -1,0 +1,78 @@
+<!--
+Author: Primus27
+Date: 05/2019
+Description: The route results page of the travel planner application
+-->
+
+{% extends 'layout.html' %}
+
+<!-- Navigation Bar -->
+{% block nav %}
+    <li class="navbar-nav navbar-item mr-auto">
+        <a class="nav-link" href="/route-options">Get Started</a>
+        <a class="nav-link active" href="/route-results">Route Results</a>
+        <a class="nav-link" href="/weather-results">Weather</a>
+    </li>
+{% endblock %}
+
+<!-- Custom body data -->
+{% block body %}
+    <h1>Route Results</h1><br>
+
+    <!-- API Error Flag is False -->
+    {% if flag is sameas false %}
+        <div class="card" style="width: 17rem; height: 10rem;">
+            <div class="card-body">
+                <div class=".text-center">
+                    <span>
+                        <strong>FROM:</strong>
+                        {{ session_data["source"] }}
+                    </span><br>
+                    <span>
+                        <strong>TO:</strong>
+                        {{ session_data["destination"] }}
+                    </span><br>
+                    <span>
+                        <strong>TIME:</strong>
+                        {{ session_data["time"] }}
+                    </span><br>
+                    <span>
+                        <strong>MODE:</strong>
+                        {{ session_data["modes"] }}
+                    </span>
+                </div>
+            </div>
+        </div><br>
+
+        <table id="routeTable" class="table table-striped table-borderless">
+            <thead class="grey lighten-2">
+                <tr>
+                    <th scope = "col">Mode</th>
+                    <th scope = "col">Line #</th>
+                    <th scope = "col">From</th>
+                    <th scope = "col">To</th>
+                    <th scope = "col">Depart</th>
+                    <th scope = "col">Arrive</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through dictionary as row data -->
+                {% for route in routes.values() %}
+                    <tr>
+                        <!-- Loop through dictionary as column data -->
+                        {% for val in route.values() %}
+                            <td>{{ val }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <!-- API Error Flag is True -->
+    {% else %}
+        <div class="jumbotron text-center">
+            <h1>Something went wrong</h1><br>
+            <p class="lead">{{ routes }}</p>
+        </div>
+    {% endif %}
+{% endblock %}
