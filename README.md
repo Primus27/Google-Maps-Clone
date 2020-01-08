@@ -28,7 +28,7 @@
 
 ## Requirements and Installation
  - [Python 3.x](https://www.python.org/)
- - Install all dependencies from the requirements.txt file. `pip install -r requirements.txt`
+ - Install all dependencies from the requirements.txt file. `pip3 install -r requirements.txt`
  - To use the application, API credentials are required and stored as [environment variables within your OS]((https://docs.microsoft.com/en-us/windows/win32/shell/user-environment-variables)).
     - [Transport API](https://developer.transportapi.com/)
         - APP ID as `TRANSPORT_ID`
